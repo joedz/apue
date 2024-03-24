@@ -31,7 +31,7 @@ send_fd(int fd, int fd_to_send)
 		if (buf[1] == 0)
 			buf[1] = 1;	/* -256, etc. would screw up protocol */
 	} else {
-		if (cmptr == NULL && (cmptr = malloc(CONTROLLEN)) == NULL)
+		if (cmptr == NULL && (cmptr = (struct cmsghdr *)malloc(CONTROLLEN)) == NULL)
 			return(-1);
 		cmptr->cmsg_level  = SOL_SOCKET;
 		cmptr->cmsg_type   = SCM_RIGHTS;

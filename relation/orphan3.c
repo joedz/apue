@@ -19,7 +19,7 @@ pr_ids(char *name)
 int
 main(void)
 {
-	char	c;
+	char	c = 'a';
 	pid_t	pid;
 
 	pr_ids("parent");
@@ -34,6 +34,8 @@ main(void)
 		pr_ids("child");	/* prints only if we're continued */
 		if (read(STDIN_FILENO, &c, 1) != 1)
 			printf("read error %d on controlling TTY\n", errno);
+		
+		printf("read stdin: %c|\n", c);
 	}
 	exit(0);
 }

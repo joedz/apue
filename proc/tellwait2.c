@@ -12,11 +12,11 @@ main(void)
 	if ((pid = fork()) < 0) {
 		err_sys("fork error");
 	} else if (pid == 0) {
-		WAIT_PARENT();		/* parent goes first */
+		WAIT_PARENT();		/* parent goes first */	
 		charatatime("output from child\n");
 	} else {
 		charatatime("output from parent\n");
-		TELL_CHILD(pid);
+		TELL_CHILD(pid);					
 	}
 	exit(0);
 }

@@ -47,7 +47,7 @@ path_alloc(size_t *sizep) /* also return allocated size, if nonnull */
 	else
 		size = pathmax;
 
-	if ((ptr = malloc(size)) == NULL)
+	if ((ptr = (char *)malloc(size)) == NULL)
 		err_sys("malloc error for pathname");
 
 	if (sizep != NULL)

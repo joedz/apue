@@ -28,7 +28,7 @@ recv_fd(int fd, ssize_t (*userfunc)(int, const void *, size_t))
 		msg.msg_iovlen  = 1;
 		msg.msg_name    = NULL;
 		msg.msg_namelen = 0;
-		if (cmptr == NULL && (cmptr = malloc(CONTROLLEN)) == NULL)
+		if (cmptr == NULL && (cmptr = (struct cmsghdr *)malloc(CONTROLLEN)) == NULL)
 			return(-1);
 		msg.msg_control    = cmptr;
 		msg.msg_controllen = CONTROLLEN;
